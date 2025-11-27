@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const base_speed : float = 2.0
+const base_speed : float =  4.0
 var rng = RandomNumberGenerator.new()
 var affected_by_gravity : bool = false
 var prev_speed : float = 0.0
@@ -11,6 +11,12 @@ var opponent_score : int = 0
 var start_position : Vector3 = Vector3(0,0,0)
 var first = false
 @onready var bodym: MeshInstance3D = $MeshInstance3D
+
+@export_group("Input Actions")
+## Name of Input Action to move Left.
+@export var input_left : String = "move_left"
+## Name of Input Action to move Right.
+@export var input_right : String = "move_right"
 
 func _ready() -> void:
 	start_position = position
@@ -41,10 +47,23 @@ func _physics_process(delta: float) -> void:
 			velocity.z = 0
 			opponent_score += 1
 			restart(1)
-		elif cur_obj == "Player" or cur_obj == "Opponent":
+		elif cur_obj == "WallLeft" or cur_obj == "WallRight" or cur_obj == "Opponent":
 			velocity = velocity.bounce(collision.get_normal())
-			#velocity.z = -1.0 * velocity.z
-			move_and_collide(Vector3(velocity.x, velocity.y, velocity.z))
+			#adding some randomness to the bounces
+			velocity.x = velocity.x + rng.randi_range(-1,1)
+			move_and_collide(velocity * delta)
+		elif cur_obj == "Player":
+			velocity = velocity.bounce(collision.get_normal())
+			if velocity.z < 0:
+				velocity.z = velocity.z - 1
+			else:
+				velocity.z = velocity.z + 1
+			if Input.is_action_pressed(input_left):
+				velocity.x = velocity.x - 1
+			elif Input.is_action_pressed(input_right):
+				velocity.x = velocity.x + 1
+			
+			move_and_collide(velocity * delta)
 		else:
 			move_and_collide(velocity * delta)
 	#else:

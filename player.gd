@@ -11,10 +11,8 @@ extends CharacterBody3D
 @export var has_gravity : bool = false
 
 @export_group("Speeds")
-## Look around rotation speed.
-@export var look_speed : float = 0.002
 ## Normal speed.
-@export var base_speed : float = 3.0
+@export var base_speed : float = 2.0
 
 @export_group("Input Actions")
 ## Name of Input Action to move Left.
@@ -47,17 +45,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		capture_mouse()
 	if Input.is_key_pressed(KEY_ESCAPE):
 		release_mouse()
-	
-	# Look around
-	#if mouse_captured and event is InputEventMouseMotion:
-		#rotate_look(event.relative)
-	
-	# Toggle crouch mode
-	#if can_crouch and Input.is_action_just_pressed(input_crouch):
-		#if not crouching:
-			#crouching = true
-		#else:
-			#crouching = false
 
 func _physics_process(delta: float) -> void:
 	# If freeflying, handle freefly and nothing else
@@ -70,13 +57,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		move_speed = base_speed
 		
-
-				
-		
-	#elif can_sprint and Input.is_action_pressed(input_sprint) and not Input.is_action_just_pressed(input_sprint) and not Input.is_action_pressed(input_crouch):
-		#move_speed = sprint_speed
-	#elif can_crouch and Input.is_action_pressed(input_crouch) and is_on_floor() and not Input.is_action_pressed(input_sprint):
-		#move_speed = crouch_speed
 	# Apply desired movement to velocity
 	if can_move:
 		var input_dir := Input.get_vector(input_left, input_right, input_forward, input_back)

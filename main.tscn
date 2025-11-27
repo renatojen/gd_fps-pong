@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ctdgax3vw84yl"]
 
-[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://deubrqfjo2ife" path="res://opponent.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bcttmpcbmt4dr" path="res://ball.tscn" id="3_h2yge"]
 
@@ -39,12 +39,12 @@ transform = Transform3D(4.395767, 0, 0, 0, 1, 0, 0, 0, 2.6136324, 0, 0, 0)
 use_collision = true
 size = Vector3(1, 0.15, 6)
 
-[node name="Wall_Right" type="CSGBox3D" parent="."]
+[node name="WallRight" type="CSGBox3D" parent="."]
 transform = Transform3D(2.716, 0, 0, 0, 1.43, 0, 0, 0, 2.614, 2.1928272, 0.446, 0)
 use_collision = true
 size = Vector3(0.009, 0.629, 6)
 
-[node name="Wall_Left" type="CSGBox3D" parent="."]
+[node name="WallLeft" type="CSGBox3D" parent="."]
 transform = Transform3D(2.716, 0, 0, 0, 1.43, 0, 0, 0, 2.614, -2.1904902, 0.446, -0.006107554)
 use_collision = true
 size = Vector3(0.009, 0.629, 6.002207)
@@ -70,3 +70,5 @@ transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, -0.011038201, 0.3521
 
 [node name="Ball" parent="." instance=ExtResource("3_h2yge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34751624, -0.005832672)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
