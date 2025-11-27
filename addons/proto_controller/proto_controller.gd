@@ -8,13 +8,13 @@ extends CharacterBody3D
 ## Can we move around?
 @export var can_move : bool = true
 ## Are we affected by gravity?
-@export var has_gravity : bool = true
+@export var has_gravity : bool = false
 
 @export_group("Speeds")
 ## Look around rotation speed.
 @export var look_speed : float = 0.002
 ## Normal speed.
-@export var base_speed : float = 5.0
+@export var base_speed : float = 3.0
 
 @export_group("Input Actions")
 ## Name of Input Action to move Left.

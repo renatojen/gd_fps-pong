@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcttmpcbmt4dr"]
+
+[ext_resource type="Script" uid="uid://143pg5uvc23i" path="res://ball.gd" id="1_x8fbi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cbx31"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_x8fbi"]
+material = SubResource("StandardMaterial3D_cbx31")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_41u45"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_x8fbi"]
+radius = 0.51
+
+[node name="Ball" type="CharacterBody3D"]
+script = ExtResource("1_x8fbi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.161, 0, 0, 0, 0.161, 0, 0, 0, 0.161, 0, 0, 0)
+mesh = SubResource("SphereMesh_x8fbi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.161, 0, 0, 0, 0.161, 0, 0, 0, 0.161, 0, 0, 0)
+shape = SubResource("SphereShape3D_41u45")
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+transform = Transform3D(0.161, 0, 0, 0, 0.161, 0, 0, 0, 0.161, 0, 0.16090028, 0)
+shape = SubResource("SphereShape3D_x8fbi")

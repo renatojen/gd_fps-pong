@@ -1,2 +1,2 @@
 # gd_fps-pong
-Creating a Pong in first person in Godot to familiarize with the engine
+Creating a first person Pong in Godot to familiarize with the engine
