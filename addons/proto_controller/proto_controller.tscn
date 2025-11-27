@@ -12,7 +12,7 @@ size = Vector3(4, 2, 0.4)
 size = Vector3(2, 1, 0.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5hfox"]
-size = Vector3(4, 2, 0.4)
+size = Vector3(4.02, 2.02, 0.42)
 
 [node name="ProtoController" type="CharacterBody3D"]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
@@ -31,6 +31,7 @@ shape = SubResource("BoxShape3D_wr06p")
 [node name="ShapeCast3D" type="ShapeCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9019603, 0)
 shape = SubResource("BoxShape3D_5hfox")
+collide_with_areas = true
 
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8495785, -0.2)

@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctdgax3vw84yl"]
+[gd_scene load_steps=9 format=3 uid="uid://ctdgax3vw84yl"]
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://deubrqfjo2ife" path="res://opponent.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bcttmpcbmt4dr" path="res://ball.tscn" id="3_h2yge"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -34,6 +36,7 @@ shadow_enabled = true
 
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(4.395767, 0, 0, 0, 1, 0, 0, 0, 2.6136324, 0, 0, 0)
+use_collision = true
 size = Vector3(1, 0.15, 6)
 
 [node name="Wall_Right" type="CSGBox3D" parent="."]
@@ -46,19 +49,24 @@ transform = Transform3D(2.716, 0, 0, 0, 1.43, 0, 0, 0, 2.614, -2.1904902, 0.446,
 use_collision = true
 size = Vector3(0.009, 0.629, 6.002207)
 
-[node name="Wall_Back" type="CSGBox3D" parent="."]
-transform = Transform3D(-0.012223831, 0, 1.6740407, 0, 2.0449, 0, -2.7145061, 0, -0.0010219339, 0.004046887, 0.45062226, 7.8478823)
+[node name="PlayerGoal" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.012223644, 0, 1.7160226, 0, 2.0449, 0, -2.7144647, 0, -0.0010475621, 0.004046887, 0.45062226, 7.8478823)
 use_collision = true
 size = Vector3(0.009, 0.43611962, 2.6120653)
 material = SubResource("StandardMaterial3D_h2yge")
 
-[node name="Wall_Front" type="CSGBox3D" parent="."]
-transform = Transform3D(-0.012223946, 0, 1.6643941, 0, 2.0449, 0, -2.7145317, 0, -0.0010160451, 0.004, 0.451, -7.8470874)
+[node name="OpponentGoal" type="CSGBox3D" parent="."]
+transform = Transform3D(-0.012223637, 0, 1.7334534, 0, 2.0449, 0, -2.714463, 0, -0.0010582029, 0.004, 0.451, -7.8470874)
 use_collision = true
 size = Vector3(0.009, 0.43278614, 2.6120653)
 material = SubResource("StandardMaterial3D_1bvp3")
 
-[node name="ProtoController" parent="." instance=ExtResource("1_ig7tw")]
+[node name="Player" parent="." instance=ExtResource("1_ig7tw")]
 transform = Transform3D(0.1636341, 0, 0, 0, 0.1636341, 0, 0, 0, 0.1636341, -0.01116541, 0.2020764, 7.6117363)
-has_gravity = false
-base_speed = 3.0
+motion_mode = 1
+
+[node name="Opponent" parent="." instance=ExtResource("2_0xm2m")]
+transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, -0.011038201, 0.35215825, -7.7241116)
+
+[node name="Ball" parent="." instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34751624, -0.005832672)

@@ -40,7 +40,7 @@ move_back={
 
 [physics]
 
-3d/default_gravity=0.0
+3d/default_gravity=9.799999999999995
 3d/default_gravity_vector=Vector3(0, 0, 0)
 
 [rendering]
